@@ -7,14 +7,14 @@ ARG FRM
 ARG TAG
 
 # Install basic packages
-RUN apt-get -y update \
-    && apt-get -y upgrade \
-    && apt-get -y dist-upgrade \
-    && apt-get -y install bash nano procps tini \
-    && apt-get -y install curl unzip jq \
-    && apt-get -y autoremove \
-    && apt-get -y autoclean \
-    && apt-get -y clean \
+RUN apt -y update \
+    && apt -y upgrade \
+    && apt -y dist-upgrade \
+    && apt -y install --no-install-recommends --no-install-suggests bash nano procps tini \
+    && apt -y install --no-install-recommends --no-install-suggests curl unzip jq \
+    && apt -y autoremove \
+    && apt -y autoclean \
+    && apt -y clean \
     && rm -fr /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM} with tag ${TAG}" >> /build_date.info
+RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM}" >> /build.info
