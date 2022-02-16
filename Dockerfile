@@ -1,4 +1,4 @@
-# Using focal (LTS) instead of latest to prevent accidental upgrade to jammy before everything else is ready.
+## Using focal (LTS) instead of latest to prevent accidental upgrade to jammy before everything else is ready. ##
 ARG FRM='ubuntu:focal'
 ARG TAG='latest'
 
@@ -6,7 +6,10 @@ FROM ${FRM}
 ARG FRM
 ARG TAG
 
-# Install basic packages
+## build note ##
+RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM}" >> /build.info
+
+## Install basic packages ##
 RUN apt -y update \
     && apt -y upgrade \
     && apt -y dist-upgrade \
@@ -16,5 +19,3 @@ RUN apt -y update \
     && apt -y autoclean \
     && apt -y clean \
     && rm -fr /tmp/* /var/tmp/* /var/lib/apt/lists/*
-
-RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM}" >> /build.info
