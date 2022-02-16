@@ -1,6 +1,7 @@
 ## Using focal (LTS) instead of latest to prevent accidental upgrade to jammy before everything else is ready. ##
 ARG FRM='ubuntu:focal'
 ARG TAG='latest'
+ARG DEBIAN_FRONTEND='noninteractive'
 
 FROM ${FRM}
 ARG FRM
