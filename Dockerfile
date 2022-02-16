@@ -13,8 +13,8 @@ RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM}" >> /build.info
 RUN apt -y update \
     && apt -y upgrade \
     && apt -y dist-upgrade \
-    && apt -y install --no-install-recommends --no-install-suggests bash nano procps tini \
-    && apt -y install --no-install-recommends --no-install-suggests curl unzip jq \
+    && apt -y install bash nano procps tini \
+    && apt -y install curl unzip jq \
     && apt -y autoremove \
     && apt -y autoclean \
     && apt -y clean \
